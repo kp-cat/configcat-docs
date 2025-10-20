@@ -2,7 +2,7 @@ name: Claude Code Review
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, reopened, synchronize]
     # Optional: Only run on specific file changes
     # paths:
     #   - "src/**/*.ts"
@@ -40,9 +40,12 @@ jobs:
             REPO: ${{ github.repository }}
             PR NUMBER: ${{ github.event.pull_request.number }}
 
-            Please review this pull request.
+            Review this pull request.
+            - Only comment on files that changed in this PR.
+            - Prioritize actionable fixes and cite specific lines. Preferably, add comments with code suggestions.
+            - Keep comments concise.
 
-            Use the repository's CLAUDE.md to learn what to focus on during the review.
+            Use the repository's CLAUDE.md to learn what issues to check for.
 
             Use `gh pr comment` with your Bash tool to leave your review as a comment on the PR.
 
